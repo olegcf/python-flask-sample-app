@@ -7,6 +7,7 @@ from setuptools import setup
 with io.open("README.rst", "rt", encoding="utf8") as f:
     readme = f.read()
 
+# Some setup stuff
 setup(
     name="flaskr",
     version="1.0.0",
