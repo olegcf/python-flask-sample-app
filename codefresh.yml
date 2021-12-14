@@ -10,6 +10,25 @@ steps:
     repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
     revision: '${{CF_REVISION}}'
     stage: checkout
+  
+  Initialize:
+    type: parallel
+    stage: initialize
+    title: Clone github repositories
+    steps:
+      Init_pipeline:
+        stage: Initialize
+        title: Initialize pipeline
+        type: emburse/initialize-pipeline
+
+    Clone_repo:
+      stage: Initialize
+      title: Cloning repository ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+      type: git-clone
+      repo: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+      revision: ${{CF_BRANCH}}
+      git: Chrome-River
+
   MyAppDockerImage:
     title: Building Docker Image
     type: build
